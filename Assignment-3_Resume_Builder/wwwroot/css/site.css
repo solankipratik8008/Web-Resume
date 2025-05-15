@@ -1,0 +1,356 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #111;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+    .social-links li {
+        display: inline-block;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 24px;
+        transition: color 0.3s;
+    }
+
+        .social-links a:hover {
+            color: #ff9800;
+        }
+bar li {
+        margin: 15px 0;
+    }
+
+    .sidebar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        background: #222;
+    }
+
+        .sidebar a i {
+            font-size: 20px;
+        }
+
+        .sidebar a:hover {
+            background: white;
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .sidebar a.active {
+            background: #ff9800;
+            color: black;
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+
+/* Main content area */
+main {
+    margin-left:0px; /* Sidebar width + margin */
+    flex-grow: 1;
+    padding: 30px;
+}
+
+/* Projects Section */
+.projects-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-item {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+    .project-item img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .project-item:hover {
+        transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+
+/* Making Footer Stick to the Bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-left:0px;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+}
+
+    .social-links li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 24px;
+    }
+
+        .social-links a:hover {
+            color: #ff9800;
+        }
+/* Profile Photo Styling */
+.profile-photo {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: inline-block; /* Use inline-block to keep it in its previous position */
+}
+
+    /* Hover effect for image (fading to white) */
+    .profile-photo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        filter: brightness(0.4); /* Fades the image to a lighter, almost white appearance */
+    }
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #111;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar li {
+        margin: 15px 0;
+    }
+
+    .sidebar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        background: #222;
+    }
+
+        .sidebar a i {
+            font-size: 20px;
+        }
+
+        .sidebar a:hover {
+            background: #333;
+            transform: scale(1.1);
+        }
+
+        .sidebar a.active {
+            background: #ff9800;
+            color: black;
+            font-weight: bold;
+            transform: scale(1.1);
+        }
+
+main {
+    margin-left: 215px;
+    flex-grow: 1;
+    padding: 50px;
+}
+
+.projects-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-item {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+    .project-item img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .project-item:hover {
+        transform: scale(1.05);
+    }
+
+.footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+}
+
+    .social-links li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 24px;
+    }
+
+        .social-links a:hover {
+            color: #ff9800;
+        }
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .sidebar {
+        display: none;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+@media (max-width: 375px) {
+    .sidebar {
+        display: none;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .about-description {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    .button-link {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

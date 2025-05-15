@@ -1,0 +1,294 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - My Portfolio</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        .dancing-script-uniquifier {
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+            .social-links li {
+                display: inline-block;
+            }
+
+            .social-links a {
+                color: white;
+                font-size: 24px;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: rebeccapurple;
+                }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            background: #222;
+        }
+
+            .sidebar a i {
+                font-size: 20px;
+            }
+
+            .sidebar a:hover {
+                background: white;
+                transform: scale(1.05);
+            }
+
+            .sidebar a.active {
+                background: white;
+                color: black;
+                font-weight: bold;
+                transform: scale(1.05);
+            }
+
+        .about-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .profile-container {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 3px solid white;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .profile-photo:hover {
+                transform: scale(1.1);
+            }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .about-description {
+            max-width: 500px;
+            font-size: 1.1em;
+            color: #ddd;
+        }
+
+        a.button-link {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            a.button-link:hover {
+                background-color: #45a049;
+                transform: translateY(-4px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            a.button-link:focus {
+                outline: none;
+                border: 2px solid #ffffff;
+                background-color: #4CAF50;
+            }
+
+            a.button-link:active {
+                transform: translateY(2px);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+        .project-item {
+            margin-bottom: 20px;
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+            .project-item img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+
+        .download-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .download-button:hover {
+                background-color: #0056b3;
+                transform: translateY(-4px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .download-button:focus {
+                outline: none;
+                border: 2px solid #ffffff;
+            }
+
+            .download-button:active {
+                transform: translateY(2px);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="sidebar">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a asp-controller="Home" asp-action="Resume" class="nav-link"><i class="fas fa-file-alt"></i> Resume</a></li>
+                <li><a asp-controller="Home" asp-action="Contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a asp-controller="Home" asp-action="Comment" class="nav-link"><i class="fas fa-comments"></i> Comments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hi, I’m <strong>Pratikkumar Solanki</strong>, a professional mobile developer with experience in both front-end and back-end technologies. I specialize in building mobile applications for iOS and Android platforms.</p>
+
+            <section class="intro">
+                <h2>About Me</h2>
+                <div class="about-container">
+                    <div class="profile-container">
+                        <img src="~/images/Mypic.jpg" alt="Pratikkumar Solanki" class="profile-photo" />
+                        <div class="profile-name">Pratikkumar Solanki</div>
+                    </div>
+                    <div class="about-description">
+                        <p>I am passionate about creating mobile applications that provide seamless user experiences. With years of experience in mobile development, I focus on delivering high-quality, efficient, and innovative mobile solutions.</p>
+                        <p>In Addition, I am Working on flutter to become good Android Developer i want to mention some my projects file and my git-hub repositories.On top of that I Really have interest in python,c# etc but my most favorite languages are Python and Flutter
+                            , In future I want to work on Python and I will But Right Now I am learning Flutter and c#.</p>
+
+                            <p>Thank You!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Featured Projects</h2>
+                <div class="projects-container">
+                    <div class="projects-grid">
+                        <div class="project-item">
+                            <img src="~/Images/Project1.png" alt="Project 1" />
+                            <h3>Project One</h3>
+                            <p>This is my Flutter Project where I Created One nice looking Login-page as well as Home page with all functionality </p>
+                            <a class="button-link" href="https://github.com/PratikkumarSolanki/MobileAppProject" target="_blank">Learn More</a>
+                            <a href="@Url.Action("DownloadProjectI", "Home")" class="download-button">Download Project 1</a>
+                        </div>
+
+                        <div class="project-item">
+                            <img src="~/Images/Project_2.jpg" alt="Project 2" />
+                            <h3>Project Two</h3>
+                            <p>This is my first swift IOS project where i use storybord and created multipage apps in X-COD.</p>
+                            <a class="button-link" href="https://github.com/PratikkumarSolanki/MobileAppProject" target="_blank">Learn More</a>
+                            <a href="@Url.Action("DownloadProjectII", "Home")" class="download-button">Download Project 2</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Pratikkumar Solanki. All Rights Reserved.</p>
+            <ul class="social-links">
+                <li><a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let links = document.querySelectorAll(".nav-link");
+            let currentPath = window.location.pathname;
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentPath) {
+                    link.classList.add("active");
+                }
+            });
+
+            const profileImage = document.querySelector('.profile-photo');
+            const profileName = document.querySelector('.profile-name');
+
+            profileImage.addEventListener('click', function () {
+                profileImage.classList.add('clicked');
+                profileName.style.display = 'block';
+                setTimeout(function () {
+                    profileName.style.opacity = 1;
+                    profileName.style.transform = 'translateY(0)';
+                }, 100);
+
+                setTimeout(function () {
+                    profileImage.classList.remove('clicked');
+                }, 600);
+            });
+        });
+    </script>
+</body>
+
+</html>

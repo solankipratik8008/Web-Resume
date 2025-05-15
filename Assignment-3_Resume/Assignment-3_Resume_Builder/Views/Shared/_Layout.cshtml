@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Portfolio</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+    <header>
+        <nav class="sidebar">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a asp-controller="Home" asp-action="Resume" class="nav-link"><i class="fas fa-file-alt"></i> Resume</a></li>
+                <li><a asp-controller="Home" asp-action="Contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a asp-controller="Home" asp-action="Comment" class="nav-link"><i class="fas fa-comments"></i> Comments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()  <!-- This renders the content of the specific view -->
+    </main>
+
+    <!-- Render Scripts section if it exists in the view -->
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let links = document.querySelectorAll(".nav-link");
+            let currentPath = window.location.pathname;
+            links.forEach(link => {
+                if (link.getAttribute("href") === currentPath) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

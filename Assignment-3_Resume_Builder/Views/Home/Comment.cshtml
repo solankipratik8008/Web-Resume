@@ -1,0 +1,192 @@
+﻿@model List<Comment>
+
+<h2>Leave a Comment</h2>
+
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+            .social-links li {
+                display: inline-block;
+            }
+
+            .social-links a {
+                color: white;
+                font-size: 24px;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: mediumpurple;
+                }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            background: #222;
+        }
+
+            .sidebar a i {
+                font-size: 20px;
+            }
+
+            .sidebar a:hover {
+                background: white;
+                transform: scale(1.05);
+            }
+
+            .sidebar a.active {
+                background: white;
+                color: black;
+                font-weight: bold;
+                transform: scale(1.05);
+            }
+
+        /* Add CSS for the Edit/Delete buttons */
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+            .btn i {
+                font-size: 16px;
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                transform: scale(1.05);
+            }
+
+        .comment-box {
+            background-color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+            .comment-box p {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .comment-box small {
+                font-size: 12px;
+                color: #ccc;
+            }
+
+        /* Add some space between the buttons */
+        .btn-container {
+            display: flex;
+            gap: 10px; /* Space between the buttons */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<!-- Comment Form -->
+<form method="post" action="@Url.Action("AddComment", "Home")">
+
+    <label>Input Name</label>
+    <br />
+    <input type="text" name="name" required placeholder="Write a Name..." style="width:100%;" />
+    <br />
+
+    <textarea name="text" required placeholder="Write a comment..." rows="3" style="width:100%;"></textarea>
+    <br />
+    <button type="submit">Post Comment</button>
+</form>
+
+<hr />
+
+<!-- Display Comments -->
+<!-- Display Comments -->
+@foreach (var comment in Model)
+{
+    <div class="comment-box">
+        <p><strong>@comment.Name</strong></p> <!-- Show the Name -->
+        <p>@comment.Text</p>
+        <small>Posted on: @comment.CreatedAt</small>
+
+        <div class="btn-container">
+            <a href="@Url.Action("Edit", "Home", new { id = comment.Id })" class="btn btn-primary">
+                <i class="bi bi-pencil"></i> Edit
+            </a>
+
+            <a href="javascript:void(0);" class="btn btn-danger" onclick="confirmDelete(@comment.Id)">
+                <i class="bi bi-trash"></i> Delete
+            </a>
+        </div>
+    </div>
+}
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2025 Pratikkumar Solanki. All Rights Reserved.</p>
+        <ul class="social-links">
+            <li><a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+    </div>
+</footer>
+@section Scripts {
+    <script>
+        // Hide success message after 3 seconds
+        setTimeout(function () {
+            document.getElementById("success-alert")?.classList.add("d-none");
+        }, 3000);
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won’t be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/Home/Delete/${id}`;
+                }
+            });
+        }
+    </script>
+}
